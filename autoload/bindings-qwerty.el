@@ -3,24 +3,9 @@
 ;;;###autoload
 (defun +meow--setup-qwerty ()
   (setq meow-cheatsheet-layout meow-cheatsheet-layout-qwerty)
-  (meow-motion-overwrite-define-key
-   ;; 'j' and 'k' are suggested to be bound to `meow-next' and `meow-prev', but
-   ;; these deactivate the region, which is not helpful unless we're in normal
-   ;; state.
-   ;; TODO PR in suggested bindings
-   '("j" . next-line)
-   '("k" . previous-line)
+  (meow-motion-define-key
    '("<escape>" . ignore))
   (meow-leader-define-key
-   ;; ;; The suggested bindings would have allowed us to use 'SPC j' and 'SPC k'
-   ;; ;; to run whatever commands were originally mapped to 'j' and 'k' while in
-   ;; ;; Motion state. But our bindings make SPC k the prefix for
-   ;; ;; `doom-leader-code-map', so that won't work. Nevertheless, we leave
-   ;; ;; those bindings here anyway.
-   ;; SPC j/k will run the original command in MOTION state
-   ;; (because we set `meow-motion-remap-prefix' to "C-")
-   '("j" . "C-j")
-   '("k" . "C-k")
    ;; Use SPC (0-9) for digit arguments.
    '("1" . meow-digit-argument)
    '("2" . meow-digit-argument)
